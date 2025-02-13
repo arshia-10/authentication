@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/formSubmit" method="post">
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="user-name">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input type="text" name="user-email">
+        </div>
+        <div>
+            <label for="">Address</label>
+            <input type="text" name="user-address">
+        </div>
+        <div>
+            <label for="">Marks</label>
+            <input type="text" name="user-marks">
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    {{users}}
+    {% if condition %}
+    <table  border="black">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>address</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for user in users %}
+            <tr>
+                <td>{{user.roll_no}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.marks}}</td>
+            </tr>
+            
+         {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/formSubmit" method="post">
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="user-name" value="">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input type="text" name="user-email">
+        </div>
+        <div>
+            <label for="">Address</label>
+            <input type="text" name="user-address">
+        </div>
+        <div>
+            <label for="">Marks</label>
+            <input type="text" name="user-marks">
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <!-- {{users}} -->
+
+    {% if users %}
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr> 
+                    <td>{{user.roll_no}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.marks}}</td>
+                    <td><a href="{{ url_for('deleteFunction',roll_number=user.roll_no ) }}">Delete</a></td>
+                    <td><a href="{{ url_for('updateFunction',roll_number=user.roll_no ) }}">Edit</a></td>
+                    
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    
+    </table>
+        
+    {% endif %}
+
+  
+</body>
+</html>
